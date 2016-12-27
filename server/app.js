@@ -8,8 +8,10 @@ var port = normalizePort(process.env.PORT || '3000');
 
 
 app.set('port', port);
-app.use(express.static( __dirname + '/../views'));
-app.use(express.static( __dirname + '/../static'));
+app.use(express.static(path.join(__dirname + '/../views')));
+app.use(express.static(path.join(__dirname + '/../static')));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 app.use('/', routes);
 
 /**
@@ -23,6 +25,8 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+
 
 
 /**
@@ -84,3 +88,5 @@ function onListening() {
         : 'port ' + addr.port;
     debug('Listening on ' + bind);
 }
+
+module.exports = app;
