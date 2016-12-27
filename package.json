@@ -6,6 +6,7 @@
         "start": "node ./server/app"
     },
     "dependencies": {
-        "express": "~4.14.0"
+        "express": "~4.14.0",
+        "debug": "~2.2.0"
     }
 }
