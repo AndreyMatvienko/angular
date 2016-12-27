@@ -1,0 +1,11 @@
+{
+    "name": "Angular",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "node ./server/app"
+    },
+    "dependencies": {
+        "express": "~4.14.0"
+    }
+}
