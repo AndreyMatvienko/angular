@@ -2,30 +2,27 @@ var express = require('express');
 var app = express();
 var debug = require('debug')('nodetest:server');
 var http = require('http');
-
+var path = require('path');
+var routes = require('./router');
 var port = normalizePort(process.env.PORT || '3000');
+
+
 app.set('port', port);
+app.use(express.static( __dirname + '/../views'));
+app.use(express.static( __dirname + '/../static'));
+app.use('/', routes);
 
 /**
  * Create HTTP server.
  */
-
-
 var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-
-app.get('/', function (req, res) {
-    console.log('Home page');
-    res.send('Hello 123!');
-});
-
 
 
 /**
